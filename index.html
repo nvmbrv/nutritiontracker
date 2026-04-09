@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>Nutrition Tracker</h1>
-        <p class="subtitle">Describe what you ate, review nutrition data, and approve before logging.</p>
+        <p class="subtitle">Describe what you ate, run smart multi-source nutrition search, and approve before logging.</p>
     </header>
 
     <main class="layout">
@@ -21,6 +21,21 @@
                 <label for="foodSearch">Food description</label>
                 <input type="text" id="foodSearch" placeholder="e.g. 2 scrambled eggs and toast" required autocomplete="off">
                 <div id="foodSuggestions" class="suggestions"></div>
+
+                <div class="ai-box">
+                    <label class="inline-check">
+                        <input type="checkbox" id="useAiAssist">
+                        Use AI meal parsing (OpenAI)
+                    </label>
+                    <label for="openAiKey">OpenAI API key (stored only in this browser session)</label>
+                    <input type="password" id="openAiKey" placeholder="sk-..." autocomplete="off">
+                    <label for="openAiModel">OpenAI model</label>
+                    <select id="openAiModel">
+                        <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+                        <option value="gpt-4.1">gpt-4.1</option>
+                        <option value="gpt-4o-mini">gpt-4o-mini</option>
+                    </select>
+                </div>
 
                 <label for="quantity">Quantity</label>
                 <input type="number" id="quantity" placeholder="Enter amount" required min="0.01" step="0.01" value="1">

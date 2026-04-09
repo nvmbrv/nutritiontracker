@@ -104,6 +104,26 @@ button.secondary:hover {
     overflow-y: auto;
 }
 
+.ai-box {
+    margin-top: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: #f8fafc;
+}
+
+.inline-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0;
+}
+
+.inline-check input {
+    width: auto;
+    margin: 0;
+}
+
 .suggestion-item {
     padding: 0.5rem;
     cursor: pointer;
