@@ -1,46 +1,35 @@
 :root {
     --bg: #f3f6fb;
-    --card: #ffffff;
+    --card: #fff;
     --text: #1c2533;
     --muted: #64748b;
     --accent: #0f766e;
     --accent-dark: #115e59;
     --border: #dbe3ef;
-    --danger: #b42318;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     margin: 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
 }
 
 header {
-    padding: 2rem 1rem 1rem;
     text-align: center;
+    padding: 2rem 1rem 1rem;
 }
 
-h1, h2, h3 {
-    margin: 0.25rem 0;
-}
-
-.subtitle {
-    color: var(--muted);
-    margin: 0;
-}
+.subtitle { color: var(--muted); margin: 0; }
 
 .layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto 2rem;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
 }
 
 .card {
@@ -51,147 +40,82 @@ h1, h2, h3 {
     box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
 }
 
-form label {
+label {
     display: block;
     margin-top: 0.75rem;
     font-weight: 600;
     font-size: 0.92rem;
 }
 
-input,
-select,
-button {
+input, textarea, button {
     width: 100%;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    padding: 0.65rem;
     margin-top: 0.25rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.65rem;
     font-size: 0.95rem;
 }
 
 button {
+    margin-top: 1rem;
     border: none;
     color: #fff;
     background: var(--accent);
     font-weight: 600;
-    margin-top: 1rem;
     cursor: pointer;
 }
 
-button:hover {
-    background: var(--accent-dark);
-}
+button:hover { background: var(--accent-dark); }
+button.secondary { background: #475467; }
+button.secondary:hover { background: #344054; }
 
-button.secondary {
-    background: #475467;
-}
-
-button.secondary:hover {
-    background: #344054;
-}
-
-.split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-}
-
-.suggestions {
-    margin-top: 0.4rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    max-height: 170px;
-    overflow-y: auto;
-}
-
-.suggestion-item {
-    padding: 0.5rem;
-    cursor: pointer;
-    border-bottom: 1px solid var(--border);
-}
-
-.suggestion-item:last-child {
-    border-bottom: none;
-}
-
-.suggestion-item:hover {
-    background: #f1f5f9;
-}
-
-.hidden {
-    display: none;
-}
-
-.review {
-    margin-top: 1rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1rem;
-}
-
-.review-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    gap: 0.75rem;
-}
-
-.review-actions {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.source {
+.status, .hint {
     color: var(--muted);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
 }
 
-.metrics {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
-    margin: 0.75rem 0;
-}
-
-.metrics article {
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: #fafcff;
-}
-
-.metrics p {
-    margin: 0.3rem 0 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.chart-wrap {
-    margin: 1rem 0;
-    min-height: 260px;
-}
+.hidden { display: none; }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.92rem;
+    margin-top: 0.75rem;
 }
 
-th,
-td {
+th, td {
     border-bottom: 1px solid var(--border);
-    padding: 0.55rem;
     text-align: left;
+    padding: 0.55rem;
 }
 
-th {
+th { background: #f8fafc; }
+
+td input {
+    margin: 0;
+    padding: 0.35rem;
+}
+
+.actions {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.totals {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
     background: #f8fafc;
+    font-weight: 600;
 }
 
-.error {
-    color: var(--danger);
+.saved-list {
+    padding-left: 1.1rem;
+    margin: 0;
 }
 
-@media (max-width: 900px) {
-    .metrics {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.saved-list li {
+    margin-bottom: 0.45rem;
+    color: #344054;
 }
