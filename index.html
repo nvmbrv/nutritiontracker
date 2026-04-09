@@ -5,54 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
     <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Nutrition Tracker</h1>
+    <header>
+        <h1>Nutrition Tracker</h1>
+        <p class="subtitle">Describe what you ate, review nutrition data, and approve before logging.</p>
+    </header>
 
-    <section id="food-entry">
-        <h2>Log Your Food</h2>
-        <form id="foodForm">
-            <input type="text" id="foodSearch" placeholder="Search for food..." required>
-            <div id="foodSuggestions"></div>
-            
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" placeholder="Enter amount" required>
-            <select id="unit">
-                <option value="grams">Grams</option>
-                <option value="cups">Cups</option>
-            </select>
+    <main class="layout">
+        <section id="food-entry" class="card">
+            <h2>Log Your Food</h2>
+            <form id="foodForm">
+                <label for="foodSearch">Food description</label>
+                <input type="text" id="foodSearch" placeholder="e.g. 2 scrambled eggs and toast" required autocomplete="off">
+                <div id="foodSuggestions" class="suggestions"></div>
 
-            <label for="date">Date:</label>
-            <input type="date" id="date">
-            
-            <label for="time">Time:</label>
-            <input type="time" id="time">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" placeholder="Enter amount" required min="0.01" step="0.01" value="1">
 
-            <button type="submit">Add Entry</button>
-        </form>
-    </section>
+                <label for="unit">Unit</label>
+                <select id="unit">
+                    <option value="grams">Grams</option>
+                    <option value="serving">Serving</option>
+                    <option value="cups">Cups</option>
+                    <option value="oz">Ounces</option>
+                </select>
 
-    <section id="dashboard">
-        <h2>Food Entries</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Food</th>
-                    <th>Quantity</th>
-                    <th>Calories</th>
-                    <th>Protein</th>
-                    <th>Carbs</th>
-                    <th>Fats</th>
-                </tr>
-            </thead>
-            <tbody id="foodTable">
-                <!-- Food entries will be inserted here dynamically -->
-            </tbody>
-        </table>
-        <canvas id="chart"></canvas>
-    </section>
+                <div class="split">
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date">
+                    </div>
+                    <div>
+                        <label for="time">Time</label>
+                        <input type="time" id="time">
+                    </div>
+                </div>
+
+                <button type="submit">Find nutrition data</button>
+            </form>
+
+            <div id="reviewPanel" class="review hidden">
+                <h3>Review &amp; Approve</h3>
+                <p id="reviewFood"></p>
+                <div class="review-grid">
+                    <label>Calories <input type="number" id="reviewCalories" min="0" step="1"></label>
+                    <label>Protein (g) <input type="number" id="reviewProtein" min="0" step="0.1"></label>
+                    <label>Carbs (g) <input type="number" id="reviewCarbs" min="0" step="0.1"></label>
+                    <label>Fat (g) <input type="number" id="reviewFat" min="0" step="0.1"></label>
+                </div>
+                <p id="reviewSource" class="source"></p>
+                <div class="review-actions">
+                    <button id="approveBtn" type="button">Approve &amp; Add</button>
+                    <button id="cancelBtn" type="button" class="secondary">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="card">
+            <h2>Dashboard</h2>
+            <div class="metrics" id="metricCards">
+                <article><h3>Calories</h3><p id="totalCalories">0</p></article>
+                <article><h3>Protein</h3><p id="totalProtein">0 g</p></article>
+                <article><h3>Carbs</h3><p id="totalCarbs">0 g</p></article>
+                <article><h3>Fat</h3><p id="totalFat">0 g</p></article>
+            </div>
+
+            <div class="chart-wrap">
+                <canvas id="trendChart"></canvas>
+            </div>
+
+            <h3>Approved Entries</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Calories</th>
+                        <th>Protein</th>
+                        <th>Carbs</th>
+                        <th>Fat</th>
+                    </tr>
+                </thead>
+                <tbody id="foodTable"></tbody>
+            </table>
+        </section>
+    </main>
 </body>
 </html>
